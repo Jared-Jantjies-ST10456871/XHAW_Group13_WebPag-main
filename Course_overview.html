@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our courses on offer - Empower The Nation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      background-color: burlywood;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .course-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 20px;
+    }
+
+    .flip-card {
+      background-color: transparent;
+      width: 300px;
+      height: 400px;
+      perspective: 1000px;
+      margin: 20px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+    }
+
+    .flip-card-front {
+      background-color: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .flip-card-front img {
+      width: 80%;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    .flip-card-back {
+      background-color: #87ADDE;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: rotateY(180deg);
+    }
+
+    .price-tag {
+      font-size: 24px;
+      color: #28a745;
+      margin: 10px 0;
+    }
+
+    .btn-view-details {
+      padding: 10px 20px;
+      background-color: white;
+      color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .btn-view-details:hover {
+      background-color: #0056b3;
+      color: white;
+    }
+    header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .logo {
+            width: 70px;
+            height: 60px;
+            float: left;
+        }
+  </style>
+</head>
+<body>
+  <img src="_images/logo2.jpg" alt="Empower header logo" class="logo">
+    <header>
+        <nav>
+            <ul>
+              <li><a href="Homepage.html">Home</a></li>
+              <li><a href="AboutUs.html">AboutUs</a></li>
+              <li><a href="Course_overview.html">Courses</a></li>
+              <li><a href="Calculation.html">Contact&Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+  <h1>Six Week Course</h1>
+  
+  <!-- 3 Flip Cards Container -->
+  <div class="course-container">
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="_images/cooking.jpg" alt="Cooking Overview Image">
+          <h2>COOKING</h2>
+          <p class="price-tag">R750</p>
+        </div>
+        <div class="flip-card-back">
+          <h2>Course Details</h2>
+          <a href="Cooking.html" class="btn-view-details">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="_images/gardening.jpg" alt="Gardenmaintenance Overview Image">
+          <h2>GARDEN MAINTENANCE</h2>
+          <p class="price-tag">R750</p>
+        </div>
+        <div class="flip-card-back">
+          <h2>Course Details</h2>
+          <a href="Gardening.html" class="btn-view-details">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="_images/childMinding.jpg" alt="ChildMinding Overview image">
+          <h2>CHILD MINDING</h2>
+          <p class="price-tag">R750</p>
+        </div>
+        <div class="flip-card-back">
+          <h2>Course Details</h2>
+          <a href="ChildMinding.html" class="btn-view-details">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h1>Six Month Courses</h1>
+
+  <!-- 4 Flip Cards Container -->
+  <div class="course-container">
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="_images/lifeskills2.jpg" alt="LifeSkills Overview Image">
+          <h2>LIFE SKILLS</h2>
+          <p class="price-tag">R1500</p>
+        </div>
+        <div class="flip-card-back">
+          <h2>Course Details</h2>
+          <a href="Lifeskills.html" class="btn-view-details">Learn</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="_images/firstAid1.jpg" alt="FirstAid Overview Image">
+          <h2>FIRST AID</h2>
+          <p class="price-tag">R1500</p>
+        </div>
+        <div class="flip-card-back">
+          <h2>Course Details</h2>
+          <a href="FirstAid.html" class="btn-view-details">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="_images/landscaping.jpg" alt="Landscaping Overview Image">
+          <h2>LANDSCAPING</h2>
+          <p class="price-tag">R1500</p>
+        </div>
+        <div class="flip-card-back">
+          <h2>Course Details</h2>
+          <a href="Landscaping.html" class="btn-view-details">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="_images/sewing.jpg" alt="Sewing Overview Image">
+          <h2>SEWING<h2>
+          <p class="price-tag">R1500</p>
+        </div>
+        <div class="flip-card-back">
+          <h2>Course Details</h2>
+          <a href="Sewing.html" class="btn-view-details">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <hr>
+    <p style="text-align: center;">&copy; 2024 EMPOWER THE NATION</p>
+</footer>
+
+</body>
+</html>

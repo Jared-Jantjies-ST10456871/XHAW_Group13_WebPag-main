@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conatc and Payment - Empower The Nation</title>
+    <style>
+        body {
+            background-color: burlywood;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .logo {
+            width: 70px;
+            height: 60px;
+            float: left;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .box {
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px;
+            flex: 1 1 45%;
+            max-width: 500px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3, p {
+            text-align: center;
+        }
+
+        .contact-info, iframe {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonials p {
+            font-style: italic;
+        }
+
+        .course-overview {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            text-align: left;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+        }
+
+        .faq-item h3 {
+            cursor: pointer;
+        }
+
+        .faq-item p {
+            display: none;
+            margin: 10px 0 0;
+        }
+
+        /* Subscription Form */
+        .subscription-form {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .subscription-form input[type="email"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 60%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .subscription-form input[type="submit"] {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img src="_images/logo2.jpg" alt="Empower header logo" class="logo">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Homepage.html">Home</a></li>
+                <li><a href="AboutUs.html">AboutUs</a></li>
+                <li><a href="Course_overview.html">Courses</a></li>
+                <li><a href="Calculation.html">Contact&Payment</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="box">
+            <h1>Select Your Courses</h1>
+            <div class="course-checkbox">
+                <label><input type="checkbox" class="course" data-price="1500"> First Aid (R1500)</label>
+                <label><input type="checkbox" class="course" data-price="1500"> Sewing (R1500)</label>
+                <label><input type="checkbox" class="course" data-price="1500"> Life Skills (R1500)</label>
+                <label><input type="checkbox" class="course" data-price="1500"> Landscaping (R1500)</label>
+                <label><input type="checkbox" class="course" data-price="750"> Cooking (R750)</label>
+                <label><input type="checkbox" class="course" data-price="750"> Child Minding (R750)</label>
+                <label><input type="checkbox" class="course" data-price="750"> Garden Maintenance (R750)</label>
+            </div>
+        </div>
+
+        <div class="box box-payment">
+            <h1>Payment</h1>
+            <h3>Total: R <span id="totalAmount">0</span></h3>
+            <h3>Discount: <span id="discountPercent">0</span>%</h3>
+            <h3>Total with Discount: R <span id="totalWithDiscount">0</span></h3>
+        </div>
+    </main>
+
+  
+    <script>
+        const courseCheckboxes = document.querySelectorAll('.course');
+        const totalAmountEl = document.getElementById('totalAmount');
+        const discountPercentEl = document.getElementById('discountPercent');
+        const totalWithDiscountEl = document.getElementById('totalWithDiscount');
+
+        function calculatePayment() {
+            let totalAmount = 0;
+            let selectedCourses = 0;
+
+            courseCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    totalAmount += parseFloat(checkbox.dataset.price);
+                    selectedCourses++;
+                }
+            });
+
+            // Determine discount based on number of selected courses
+            let discountPercent = 0;
+            if (selectedCourses === 2) {
+                discountPercent = 5;
+            } else if (selectedCourses === 3) {
+                discountPercent = 10;
+            } else if (selectedCourses >= 4) {
+                discountPercent = 15;
+            }
+
+            const discountAmount = totalAmount * (discountPercent / 100);
+            const totalWithDiscount = totalAmount - discountAmount;
+
+            // Update HTML content
+            totalAmountEl.textContent = totalAmount.toFixed(2);
+            discountPercentEl.textContent = discountPercent;
+            totalWithDiscountEl.textContent = totalWithDiscount.toFixed(2);
+        }
+
+        // Add event listener to all checkboxes
+        courseCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', calculatePayment);
+        });
+    </script>
+
+        <!-- Testimonials Section -->
+        <div class="testimonials">
+            <h2>What Our Students Say</h2>
+            <p>"Empower the Nation has changed my life. The courses are well-structured and the staff is amazing!"</p>
+            <p>- Jane Doe</p>
+        </div>
+
+        <!-- Course Overview Section -->
+        <div class="course-overview">
+            <h2>Course Overview</h2>
+            <p><strong>First Aid:</strong> Learn life-saving techniques and emergency response skills.</p>
+            <p><strong>Sewing:</strong> Master the art of sewing and tailoring with hands-on guidance.</p>
+            <p><strong>Life Skills:</strong> Develop key life skills for personal and professional growth.</p>
+            <p><strong>Landscaping:</strong> Explore the essentials of landscaping design and maintenance.</p>
+            <p><strong>Cooking:</strong> Improve your culinary skills with our expert chefs.</p>
+        </div>
+
+        <!-- Subscription Form -->
+        <div class="subscription-form">
+            <h2>Subscribe to Our Newsletter</h2>
+            <form onsubmit="showSubscriptionPopup(event)">
+                <input type="email" id="email" placeholder="Enter your email address" required>
+                <br>
+            </form>
+        </div>
+        
+        <script>
+            function showSubscriptionPopup(event) {
+                event.preventDefault(); // Prevents the form from submitting
+        
+                // Get the email address from the input field
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+        
+                // Show a simple alert box
+                alert("Thank you for the message! We have received your email ");
+        
+                // Reset the form
+                event.target.reset();
+            }
+        </script>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>What courses are available?</h3>
+                <p>We offer a variety of courses including First Aid, Sewing, Life Skills, Cooking, and more!</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How can I contact support?</h3>
+                <p>You can reach us at (123) 456-7890 or via email at support@empowerthenation.com.</p>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p>Email: <a href="mailto:your-email@example.com">info@empowerthenation.co.za.com</a></p>
+            <p>Phone: (123) 456-7890</p>
+            <p>Address: Northern Pkwy & Dta Cres, Johannesburg, 2159, South Africa</p>
+            <p>Address: S Beach Rd, uMhlanaga, 4350</p>
+            <p>Address: The Quadrant, 146 Campground Rd, Newlands, Cape Town, 7708</p>
+        </div>
+
+        <iframe src="https://www.google.com/maps/place/Gold+Reef+City+Theme+Park/@-26.2376047,28.0117052,18z/data=!4m10!1m2!2m1!1sgold+reef+city!3m6!1s0x1e95092fa45b4141:0xb6c992120ae67baf!8m2!3d-26.2360327!4d28.0131667!15sCg5nb2xkIHJlZWYgY2l0eVoQIg5nb2xkIHJlZWYgY2l0eZIBDmFtdXNlbWVudF9wYXJr4AEA!16zL20vMDZ5dDIy?entry=ttu&g_ep=EgoyMDI0MTExMS4wIKXMDSoASAFQAw%3D%3D" width=
+    "400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <iframe src="https://www.google.com/maps/place/uMhlanga+Rocks+Beach/@-29.7268538,31.0864773,17z/data=!3m1!4b1!4m6!3m5!1s0x1ef705ddf79d4adf:0x478e3cc2600eb87c!8m2!3d-29.7268538!4d31.0890522!16s%2Fg%2F11cs6dxhpj?entry=ttu&g_ep=EgoyMDI0MTExMS4wIKXMDSoASAFQAw%3D%3D" width=
+    "400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.7671056004947!2d18.467051936023594!3d-33.97282507125419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5d1dd01d9e8d%3A0xaad0cc66371c04ac!2sThe%20IIE&#39;s%20Varsity%20College%20-%20Cape%20Town!5e0!3m2!1sen!2sza!4v1725470236641!5m2!1sen!2sza" width=
+    "400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+          </main>
+
+    <footer>
+        <p>&copy; 2024 EMPOWER THE NATION</p>
+    </footer>
+
+   
+
+        </body>
+</html>
